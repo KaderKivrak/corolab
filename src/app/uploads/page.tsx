@@ -1,13 +1,10 @@
-// src/app/uploads/page.tsx
 'use client';
-
 import { useEffect, useState } from 'react';
 
 export default function ViewUploadsPage() {
   const [files, setFiles] = useState<{ fileName: string; name: string; description: string; company: string }[]>([]);
   const [selectedFile, setSelectedFile] = useState<{ fileName: string; name: string; description: string; company: string } | null>(null);
 
-  // Fetch the list of files when the component mounts
   useEffect(() => {
     async function fetchFiles() {
       try {
@@ -26,13 +23,13 @@ export default function ViewUploadsPage() {
   }, []);
 
   return (
-    <main>
+    <div>
       <h1>Uploaded Files</h1>
       <div>
         {files.length === 0 ? (
           <p>No files uploaded yet.</p>
         ) : (
-          <ul>
+          <ul className="files-list">
             {files.map(({ fileName, name, description, company }) => (
               <li key={fileName}>
                 <a href="#" onClick={() => setSelectedFile({ fileName, name, description, company })}>
@@ -45,7 +42,7 @@ export default function ViewUploadsPage() {
       </div>
 
       {selectedFile && (
-        <div>
+        <div className="file-details">
           <h2>Details for {selectedFile.name}</h2>
           <p><strong>Description:</strong> {selectedFile.description}</p>
           <p><strong>Company:</strong> {selectedFile.company}</p>
@@ -54,6 +51,6 @@ export default function ViewUploadsPage() {
           </p>
         </div>
       )}
-    </main>
+    </div>
   );
 }
