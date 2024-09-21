@@ -1,9 +1,11 @@
 // src/app/upload/page.tsx
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function UploadPage() {
+  const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [name, setName] = useState<string>(''); // State for name
   const [description, setDescription] = useState<string>(''); // State for description
@@ -35,6 +37,10 @@ export default function UploadPage() {
       setName('');
       setDescription('');
       setCompany('');
+
+      //sender til uploads siden
+      router.push('/uploads');
+
     } catch (e) {
       console.error('Upload failed:', e);
     }
