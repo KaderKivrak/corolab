@@ -48,7 +48,7 @@ export default function UploadPage() {
 
   return (
     <main>
-      <h1>Upload Projekt</h1>
+      <h1>Nyt Projekt</h1>
       <form onSubmit={onSubmit}>
         <input
           type="text"
